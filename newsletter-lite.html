@@ -8,203 +8,38 @@
 	<![endif]-->
 	<title>MedBridge</title>
 	<style type="text/css">
-	/*
-		### Built with assistance from these sources:
-		    - https://github.com/Slicejack/slicejack-email-boilerplate/blob/master/email.html
-				- https://github.com/hteumeuleu/email-bugs/issues
-				- http://removebluelinks.com
-				- 10/5/16 Gmail update: A closer look at Google’s rendering refresh - https://www.campaignmonitor.com/blog/email-marketing/2016/10/gmail-update-googles-rendering-refresh/
-
-		### Notes
-	      - Yahoo removes !important with a space before it when using it on the display property. | https://github.com/hteumeuleu/email-bugs/issues/16
-				- Gmail on desktop does not support attribute selectors or psuedo-class selectors. However, support for classes and IDs was recently added.
-				- The old Outlook.com's CSS support depends on case. Notably, Margin and Outline must not be in all lowercase. | https://github.com/hteumeuleu/email-bugs/issues/6
-	*/
-
-	/*
-		Custom Fonts
-		Outlook desktop clients do not support @font-face. Instead of using the font stack you use in your CSS, Outlook will default to Times New Roman if your first font was your custom font. There are a few ways to prevent this from happening. Stripping out the relevant code that you find when you visit a Google Web Font's address (https://fonts.googleapis.com/css?family=Roboto:300,700) is one way. Because this allows us to have access to the @font-face declaration we can add to it to fix this Outlook issue. Adding mso-font-alt: 'Arial'; will stop Times New Roman from being used.
-
-		 - Consider removing the local option in the src: if you're experiencing issues with the correct font-weights being used. My Mac can sometimes load incorrect font-weights which makes design and proofing inaccurate.
-		 - Google delivers font files types based on the browser you're using. Since we're using the raw @font-face code instead of using @import, we need to expand on the code we get when we look at a Google Web Font in a specific browser like Chrome. As of 17-01-05 Safari does not support .woff2, so we grabbed the .woff version Google delivers when using Safari and included it here.
-
-		Ref: https://litmus.com/community/discussions/36-outlook-and-fallback-fonts#comment-2459
-	*/
-		@font-face {
-		  font-family: 'Roboto'; font-style: normal; font-weight: 300;
-		  src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2) format('woff2'), url(https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; mso-font-alt: 'Arial';
-		}
-		@font-face {
-		  font-family: 'Roboto'; font-style: normal; font-weight: 400;
-		  src: local('Roboto'), url(https://fonts.gstatic.com/s/roboto/v15/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2) format('woff2'), url(https://fonts.gstatic.com/s/roboto/v15/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;	mso-font-alt: 'Arial';
-		}
+		@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 300; src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2) format('woff2'), url(https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; mso-font-alt: 'Arial'; }
+		@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 400; src: local('Roboto'), url(https://fonts.gstatic.com/s/roboto/v15/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2) format('woff2'), url(https://fonts.gstatic.com/s/roboto/v15/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;	mso-font-alt: 'Arial'; }
 
 		/* == Client Specific Resets == */
-
-		html,
-		body {
-			/* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
-			width: 100% !important;
-			min-width: 100% !important;
-			height: 100% !important;
-			-webkit-text-size-adjust: 100%;
-			-ms-text-size-adjust: 100%;
-			Margin: 0 !important;
-			padding: 0 !important;
-			background-color: #eaedee !important;
-		}
-
-		#outlook a {
-			/* Force Outlook to provide a "View in browser" menu link. */
-			padding: 0;
-		}
-
-		.ExternalClass, .ReadMsgBody {
-			/* Force Hotmail to display emails at full width */
-			width: 100%;
-		}
-
-		.ExternalClass,
-		.ExternalClass span,
-		.ExternalClass font,
-		.ExternalClass td,
-		.ExternalClass p,
-		.ExternalClass div {
-			/* Force Hotmail to display normal line spacing. More on that: - http://www.emailonacid.com/forum/viewthread/43 */
-			line-height: 100%;
-			mso-line-height-rule: exactly;
-		}
-
-		#body-table {
-			/* The #body-table id helps reset some email client specific formatting while setting the canvas for you to work in. */
-			Margin: 0;
-			padding: 0;
-			width: 100% !important;
-			height: 100% !important;
-			line-height: 100% !important;
-		}
-
-		img {
-			Outline: none;
-			display: block;
-			text-decoration: none;
-			-ms-interpolation-mode: bicubic; /* This works to help IE properly resize images. (If you are resizing them using the width and height attributes) */
-		}
-
-		a img {
-			border: none; /* Removes border when linking images. */
-			text-decoration: none;
-		}
-
-		table td {
-			/* Outlook 07, 10 Padding issue: These "newer" versions of Outlook add some padding around table cells potentially throwing off your perfectly pixeled table. The issue can cause added space and also throw off borders completely. Use this fix in your header or inline to safely fix your table woes.
-			More info:
-			 - http://www.ianhoar.com/2008/04/29/outlook-2007-borders-and-1px-padding-on-table-cells
-			 - http://www.campaignmonitor.com/blog/post/3392/1px-borders-padding-on-table-cells-in-outlook-07 */
-			border-collapse: collapse;
-		}
-
-		table {
-			/* Remove spacing around Outlook 07, 10 tables. Ref: http://www.campaignmonitor.com/blog/post/3694/removing-spacing-from-around-tables-in-outlook-2007-and-2010 */
-			border-spacing: 0 !important;
-			border-collapse: collapse !important;
-			mso-table-lspace: 0pt !important;
-			mso-table-rspace: 0pt !important;
-		}
-
-		/*div[style*="margin: 16px 0"] {
-			 Centering emails in Android 4.4 KitKat. Ref: https://blog.jmwhite.co.uk/2015/09/19/revealing-why-emails-appear-off-centre-in-android-4-4-kitkat
-			margin: 0 !important;
-		}*/
-
-		body > div {
-			/* The fix above may not be working still. Unconfirmed. A user with the issue used the following to fix the vertical padding. https://litmus.com/community/discussions/4194-why-is-email-not-centered-on-android-4-4#comment-10172 */
-			margin:0 !important;
-		}
-
-		.yshortcuts a {
-			/* Yahoo! Mail has a knack for picking keywords in emails and linking them to advertising popups (blue, dotted links). This is how to remove them. */
-			border-bottom: none !important;
-		}
-
-		a[x-apple-data-detectors] {
-			/* Removing auto-generated blue links on Apple devices such as iPhone. More info: - http://removebluelinks.com */
-			color: inherit !important;
-			text-decoration: none !important;
-			font-size: inherit !important;
-			font-family: inherit !important;
-			font-weight: inherit !important;
-			line-height: inherit !important;
-		}
-
-		img + div > div {
-			/* Hide download icon in Gmail. Download icon appears when you hover over large, un-linked images on the desktop. Gmail does not support attribute selectors so this is as specfic as we can get. Refrain from writing HTML that matches this selector. - Ref: https://litmus.com/community/discussions/5748-large-images-in-gmail-download-arrow */
-			display: none !important;
-		}
-
+		html,	body { width: 100% !important; min-width: 100% !important; height: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; Margin: 0 !important; padding: 0 !important; background-color: #eaedee !important; }
+		#outlook a { padding: 0; }
+		.ExternalClass, .ReadMsgBody { width: 100%; }
+		.ExternalClass,	.ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass p,	.ExternalClass div { line-height: 100%; mso-line-height-rule: exactly;	}
+		#body-table { Margin: 0; padding: 0; width: 100% !important; height: 100% !important; line-height: 100% !important;	}
+		img { Outline: none; display: block; text-decoration: none; -ms-interpolation-mode: bicubic; }
+		a img {	border: none;	text-decoration: none; }
+		table td { border-collapse: collapse;	}
+		table { border-spacing: 0 !important;	border-collapse: collapse !important; mso-table-lspace: 0pt !important;	mso-table-rspace: 0pt !important;	}
+		body > div { margin:0 !important;	}
+		.yshortcuts a { border-bottom: none !important;	}
+		a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+		img + div > div {	display: none !important;	}
 
 		/* == General Resets == */
-
-		sup {
-			/* Superscript text causes the line above to have more leading. */
-			line-height:1;
-			font-size:66%;
-		}
-		b, strong {
-			font-weight:bold;
-			font-weight:400;
-		}
-
-    p, div {
-			Margin: 0;
-			padding: 0;
-		}
-
+		sup { line-height:1; font-size:66%; }
+		b, strong {	font-weight:bold;	font-weight:400; }
+    p, div { Margin: 0; padding: 0;	}
 
 		/* == General Styles == */
-
-		body, #body-table {
-			font-family: Roboto, Helvetica, Arial, sans-serif;
-			font-weight:300;
-			background-color: #eaedee;
-		}
-
-		a:visited, a:active, a:link, a:hover {
-			text-decoration: none;
-			color: #076ad2;
-		}
-
-	  .sectionWrap {
-			width:100%;
-			Margin:0;
-			padding:0;
-			text-align: center;
-			font-family: Roboto, Helvetica, Arial, sans-serif;
-			font-weight:300;
-			-webkit-text-size-adjust: 100%;
-			-ms-text-size-adjust: 100%;
-		}
-
-	  .sectionCell {
-			padding-left: 10px;
-			padding-right: 10px;
-		}
-
-	  .contentWrap {
-			width: 620px;
-			min-width: 620px;
-			text-align: left;
-		}
-	  .columnContainer {
-			width: 620px;
-			min-width: 620px;
-		}
-
+		body, #body-table { font-family: Roboto, Helvetica, Arial, sans-serif; font-weight:300; background-color: #eaedee; }
+		a:visited, a:active, a:link, a:hover { text-decoration: none; color: #076ad2; }
+	  .sectionWrap { width:100%; Margin:0; padding:0; text-align: center; font-family: Roboto, Helvetica, Arial, sans-serif; font-weight:300;	-webkit-text-size-adjust: 100%;	-ms-text-size-adjust: 100%;	}
+	  .sectionCell { padding-left: 10px; padding-right: 10px;	}
+	  .contentWrap { width: 620px;	min-width: 620px;	text-align: left;	}
+	  .columnContainer { width: 620px;	min-width: 620px;	}
 
 		/* == Mobile Adjust == */
-
     @media screen and (max-device-width: 480px), screen and (max-width: 480px) {
 
     	/* Width Resets */
@@ -267,48 +102,9 @@
 		}
 	</style>
 
-  <style type="text/css">
-	/* Responsive Email in Windows Phone 8 - https://litmus.com/community/discussions/1172-responsive-email-in-windows-phone-8#comment-3884 */
-    @media only screen and (max-width:480px) {
-      @-ms-viewport {
-        width: 320px;
-      }
-      @viewport {
-        width: 320px;
-      }
-    }
-  </style>
-
-	<!--[if gte mso 9]>
-	<style type="text/css">
-		/* Normalise space between bullets and text - https://litmus.com/community/discussions/1093-bulletproof-lists-using-ul-and-li */
-		li {
-			text-indent: -1em
-		}
-	</style>
-
-	<xml>
-	  <o:OfficeDocumentSettings>
-	    <o:AllowPNG/>
-	    <o:PixelsPerInch>96</o:PixelsPerInch>
-	 </o:OfficeDocumentSettings>
-	</xml>
-	<![endif]-->
-
-	<!--[if gte mso 15]>
-	<style type="text/css">
-		/* Outlook line-heights fix. Prevents empty td's with a height of 1px becoming 10px in Outlook 2013. - https://litmus.com/community/discussions/84-what-is-your-favorite-hack#comment-1702 */
-		table {
-			font-size: 1px;
-			line-height: 0;
-			mso-margin-top-alt: 1px;
-			mso-line-height-rule: exactly;
-		}
-		* {
-			mso-line-height-rule: exactly;
-		}
-	</style>
-	<![endif]-->
+  <style type="text/css">@media only screen and (max-width:480px) { @-ms-viewport { width: 320px; } @viewport { width: 320px; } }</style>
+	<!--[if gte mso 9]><style type="text/css">li { text-indent: -1em }</style><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+	<!--[if gte mso 15]><style type="text/css">table {	font-size: 1px; line-height: 0;	mso-margin-top-alt: 1px; mso-line-height-rule: exactly;	} * { mso-line-height-rule: exactly; }</style><![endif]-->
 
 </head>
 <body bgcolor="#eaedee" style="background-color: #eaedee; width:100%; min-width: 100%; Margin:0; padding:0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Roboto, Helvetica, Arial, sans-serif;">
