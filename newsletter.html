@@ -32,7 +32,7 @@
 	*/
 		@font-face {
 		  font-family: 'Roboto'; font-style: normal; font-weight: 300;
-		  src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2) format('woff2'), url(https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+		  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2) format('woff2'), url(https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
 		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; mso-font-alt: 'Arial';
 		}
 		@font-face {
@@ -157,7 +157,7 @@
 			font-weight:400;
 		}
 
-    p, div {
+		p, div {
 			Margin: 0;
 			padding: 0;
 		}
@@ -171,7 +171,8 @@
 			background-color: #eaedee;
 		}
 
-		a:visited, a:active, a:link, a:hover {
+		/* This isn't bulletproof in Gmail. Your link colors will be overrided if you don't inline them as well. */
+		a, a:visited, a:active, a:link, a:hover, a:-webkit-any-link {
 			text-decoration: none;
 			color: #076ad2;
 		}
@@ -197,21 +198,20 @@
 			min-width: 620px;
 			text-align: left;
 		}
+
 	  .columnContainer {
 			width: 620px;
 			min-width: 620px;
 		}
 
-
 		/* == Mobile Adjust == */
-
     @media screen and (max-device-width: 480px), screen and (max-width: 480px) {
 
     	/* Width Resets */
     	.contentWrap, .columnContainer, .fullWidth { width: 100% !important; min-width: 100% !important; }
     	.w60p { width: 60% !important; min-width: 60% !important; }
     	.sectionCell, .sectionCellReset { padding-left: 5px !important; padding-right: 5px !important; }
-    	.sectionCellReset { padding-bottom: 0px !isocial-sectionmportant; }
+    	.sectionCellReset { padding-bottom: 0px !important; }
     	.button { width: 90% !important; }
     	.mFooterLink { display: block!important; width: 100% !important; Margin-bottom: 10px !important; padding-bottom: 10px !important; border-bottom: 1px dashed #cccccc !important; text-decoration: none !important; }
     	.bgCover { background-size: cover !important; background-position: top center !important; }
@@ -232,16 +232,18 @@
 			.mImg66 { width:66% !important; min-width:66% !important; }
 
 			/* Padding Resets */
+			.noPadding { padding: 0px !important; }
+			.noXPadding { padding-left:0 !important; padding-right:0 !important; }
+			.noYPadding { padding-top:0 !important; padding-bottom:0 !important; }
+
     	.buttonPadding { padding-top: 5px !important; }
 			.paddingLeft10 { padding-left: 10px !important; }
-			.noPadding { padding: 0px !important; }
-			.noPaddingLeft{ padding-left: 0px !important; }
+			.noPaddingLeft { padding-left: 0px !important; }
     	.pbottom15 { padding-bottom:15px !important; }
-			.mReset-padding { padding:0 !important; }
-			.social-section { padding-bottom:15px; }
 			.mPaddingTop20 { padding-top:20px; }
 
 			/* Social */
+			.social-section { padding-bottom:15px; }
 			.social-spacer { border-right:none !important; border-top: 1px solid #cccccc !important; height: 20px !important; line-height:20px !important; }
 
 			/* Subscribers - Mobile App */
@@ -263,12 +265,11 @@
 			.mHide { display: none!important; width: 0px !important; max-height: 0px !important; line-height: 0px !important; padding: 0 !important; mso-hide: all !important; }
 			.mNavigation { display: block!important; border: 5px solid #ffffff; }
 			.mFooterNav { display: block!important; width: 100% !important; max-height: 100% !important; padding: 5px 0px !important; border-bottom: 1px dashed #cccccc !important; font-size: 15px !important; line-height: 20px !important; font-family: Roboto, Helvetica, Arial, sans-serif !important; color: #434343 !important; font-weight: 300 !important; }
-
 		}
 	</style>
 
   <style type="text/css">
-	/* Responsive Email in Windows Phone 8 - https://litmus.com/community/discussions/1172-responsive-email-in-windows-phone-8#comment-3884 */
+	/* Responsive email in Windows Phone 8 - https://litmus.com/community/discussions/1172-responsive-email-in-windows-phone-8#comment-3884 */
     @media only screen and (max-width:480px) {
       @-ms-viewport {
         width: 320px;
@@ -311,11 +312,8 @@
 	<![endif]-->
 
 </head>
-<body bgcolor="#eaedee" style="background-color: #eaedee; width:100%; min-width: 100%; Margin:0; padding:0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Roboto, Helvetica, Arial, sans-serif;">
+<body bgcolor="#eaedee" style="background-color: #eaedee; width:100%; min-width: 100%; Margin:0; padding:0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Roboto, Helvetica, Arial, sans-serif; font-weight:300;">
 	<table id="body-table" width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#eaedee"><tr><td align="center" valign="top"><center>
-
-
-
 
 <!-- // Logo-Nav Section Wrap -->
 <table class="sectionWrap" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" width="100%" style="width:100%; Margin:0; padding:0; text-align: center; font-family: Roboto, Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
@@ -364,7 +362,6 @@
 	</tr>
 </table>
 <!-- Logo-Nav Section Wrap \\ -->
-
 
 <!-- // Body Section Wrap -->
 <table class="sectionWrap" border="0" cellpadding="0" cellspacing="0" bgcolor="#eaedee" width="100%" style="width:100%; Margin:0; padding:0; text-align: center; font-family: Roboto, Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
@@ -444,7 +441,7 @@
                       </td>
                     </tr>
 										<tr>
-                      <td data-sub-mod="cta" valign="top" align="left" style="font-size: 18px; line-height: 23px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #076ad2; font-weight: 400;"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-cpt-course?utm_content=mod4-conted" style="text-decoration: none; color: #076ad2; font-family: Roboto,Helvetica, Arial, sans-serif !important;" target="_blank">Watch Free Course &rarr;</a></td>
+                      <td data-sub-mod="cta" valign="top" align="left" style="font-size: 18px; line-height: 23px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #076ad2; font-weight: 400;"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-cpt-course?utm_content=mod4-conted" style="text-decoration: none; color: #076ad2; font-family: Roboto,Helvetica, Arial, sans-serif !important;" target="_blank">Watch Free Course&nbsp;&rarr;</a></td>
                     </tr>
                   </table>
                 </td>
@@ -469,142 +466,135 @@
 
 
 
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
-	<!-- Body Section Wrap \\ -->
-	<!-- Body Section Wrap \\ -->
-	<!-- // Footer Section Wrap -->
-	<table class="sectionWrap" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" width="100%" style="width:100%; Margin:0; padding:0; text-align: center; font-family: Roboto, Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
-		<tr>
-			<td class="sectionCell" align="center" valign="top" style="padding-left: 10px; padding-right: 10px; padding-bottom: 25px; border-top: 1px solid #cccccc;">
-				<!-- // Mobile Navigation -->
-				<table class="contentWrap" border="0" cellpadding="0" cellspacing="0" align="center" width="620" style="width: 620px; min-width: 620px;">
-					<tr>
-						<td valign="top">
-							<table border="0" cellpadding="0" cellspacing="0" class="dHide">
-								<tr>
-									<td class="dHide" valign="top" align="center" style="width: 0px; max-height: 0px; display: none; mso-hide: all; line-height: 0px;">
-										<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
-											<tr>
-												<td class="mFooterNav" valign="top" align="center" style="width: 0px; max-height: 0px; font-size: 0px; line-height: 0px; color: #fefefe; display: none; mso-hide: all; line-height: 0px"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-conted/?utm_content=footer-conted" class="mNavigation" style="text-decoration: none; color: #434343;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Continuing Education</span></a></td>
-											</tr>
-											<tr>
-												<td class="mFooterNav" valign="top" align="center" style="width: 0px; max-height: 0px; font-size: 0px; line-height: 0px; color: #fefefe; display: none; mso-hide: all; line-height: 0px"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-hep/?utm_content=footer-pateng" class="mNavigation" style="text-decoration: none; color: #434343;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Patient Engagement</span></a></td>
-											</tr>
-											<tr>
-												<td class="mFooterNav" valign="top" align="center" style="width: 0px; max-height: 0px; font-size: 0px; line-height: 0px; color: #fefefe; display: none; mso-hide: all; line-height: 0px"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-enterprise/?utm_content=footer-ent" class="mNavigation" style="text-decoration: none; color: #434343;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Enterprise</span></a></td>
-											</tr>
-										</table>
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-				<!-- Mobile Navigation \\ -->
-				<!-- // Footer -->
-				<table class="contentWrap" border="0" cellpadding="0" cellspacing="0" align="center" width="620" style="width: 620px; min-width: 620px;">
-					<tr>
-						<td valign="top" align="center" style="padding-top: 25px; padding-bottom: 30px;">
-							<table border="0" cellpadding="0" cellspacing="0" width="100%">
-								<tr>
-									<td valign="top" align="center" style="padding-bottom: 25px; border-bottom: 1px solid #cccccc; font-size: 14px; line-height: 19px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;"><b style="font-weight: 300;">Part of a group?</b> Learn about the <a href="https://www.medbridgeeducation.com/jan-pompon-pt-enterprise/?utm_content=footer-ent" style="text-decoration: underline; color: #076ad2;" target="_blank">MedBridge&nbsp;Enterprise&nbsp;Solution</a>.</span></td>
-								</tr>
-								<tr>
-									<td valign="top" align="center" style="padding-bottom: 15px; padding-top: 15px; border-bottom: 1px solid #cccccc;">
-										<table border="0" cellpadding="0" cellspacing="0" width="100%">
-											<tr>
-												<td valign="top" align="center">
-													<table border="0" cellpadding="0" cellspacing="0">
-														<tr>
-															<td valign="top" align="left">
-																<!-- Social Section -->
-																<table border="0" cellpadding="0" cellspacing="0" width="220" class="fullWidth" align="left">
-																	<tr>
-																		<td class="social-section" align="center">
-																			<table border="0" cellpadding="0" cellspacing="0" align="center">
-																				<tr>
-																					<!-- Facebook -->
-																					<td align="center" valign="top"><a href="https://www.facebook.com/MedBridgeEducation?utm_content=footer-social-fb" style="text-decoration: none; color: #2B5D8B;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/facebook-icon-150x150.png" alt="FB" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block; color:#666666;"></a></td>
-																					<!-- Twitter -->
-																					<td align="center" valign="top" style="padding: 0px 10px;"><a href="https://www.twitter.com/MedBridgeEd?utm_content=footer-social-tw" style="text-decoration: none; color: #2B5D8B;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/twitter-icon-150x150.png" alt="TW" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block; color:#666666;"></a></td>
-																					<!-- LinkedIn -->
-																					<td align="center" valign="top"><a href="https://www.linkedin.com/company/medbridge-education?utm_content=footer-social-li" style="text-decoration: none; color: #2B5D8B;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/linkedin-icon-150x150.png" alt="LI" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block; color:#666666;"></a></td>
-																					<!-- YouTube -->
-																					<td align="center" valign="top" style="padding:0 0 0 10px;"><a href="https://www.youtube.com/user/medbridgeeducation?utm_content=footer-social-yt" style="text-decoration: none; color: #2B5D8B;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/youtube-icon-150x150.png" alt="YT" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block; color:#666666;"></a></td>
-																				</tr>
-																			</table>
-																		</td>
-																	</tr>
-																</table>
-																<!--[if gte mso 9]>
-																</td><td valign="top" align="left" width="10">
-																<![endif]-->
-																<table border="0" cellpadding="0" cellspacing="0" width="10" class="fullWidth" align="left">
-																	<tr>
-																		<td class="social-spacer" valign="top" align="left" width="10" height="35" style="font-size: 1px; line-height: 35px; border-right: 1px solid #cccccc;"></td>
-																	</tr>
-																</table>
-																<!--[if gte mso 9]>
-																</td><td valign="top" align="left" width="270">
-																<![endif]-->
-																<table border="0" cellpadding="0" cellspacing="0" width="270" class="fullWidth" align="left">
-																	<tr>
-																		<td valign="top" align="center">
-																			<table border="0" cellpadding="0" cellspacing="0">
-																				<tr>
-																					<td class="noPadding" valign="top" align="left" style="padding-left: 30px;">
-																						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-																							<tr>
-																								<td class="textCenter" valign="top" align="center" style="font-size: 14px; line-height: 19px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-pricing?utm_content=footer-purchase" style="text-decoration: none; color: #666666;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;"><b style="font-weight: 300;">Earn All Your CEUs for One Price</b></span></a></td>
-																							</tr>
-																							<tr>
-																								<td class="textCenter" valign="top" align="center" style="font-size: 14px; line-height: 19px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-pricing?utm_content=footer-purchase" style="text-decoration: none; color: #666666;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Subscribe Today &rarr;</span></a></td>
-																							</tr>
-																						</table>
-																					</td>
-																				</tr>
-																			</table>
-																		</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</table>
-									</td>
-								</tr>
-								<tr>
-									<td valign="top" align="left" style="padding-top: 20px;">
-										<table border="0" cellpadding="0" cellspacing="0" width="100%">
-											<tr>
-												<td align="center" valign="top" style="font-size: 12px; line-height: 16px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><a href="*|ARCHIVE|*" class="mFooterLink" style="color: #666666; text-decoration: underline;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">View Online</span></a> <span class="mHide">&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;</span> <a href="*|UNSUB|*" class="mFooterLink" style="color: #666666; text-decoration: underline;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Unsubscribe</span></a> <span class="mHide">&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;</span> <a href="https://www.medbridgeeducation.com/jan-pompon-pt-support?utm_content=footer-support" class="mFooterLink" style="color: #666666; text-decoration: underline;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Support</span></a>
-												</td>
-											</tr>
-											<tr>
-												<td align="center" valign="top" style="padding-top: 15px; padding-right: 5px; padding-bottom: 10px; padding-left: 5px; font-size: 12px; line-height: 16px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">*|LIST:ADDRESSLINE|*</span></td>
-											</tr>
-										</table>
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-				<!-- Footer \\ -->
-			</td>
-		</tr>
-	</table>
-	<!-- Footer Section Wrap \\ -->
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- Body Section Wrap \\ -->
 
-
-
+<!-- // Footer Section Wrap -->
+<table class="sectionWrap" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" width="100%" style="width:100%; Margin:0; padding:0; text-align: center; font-family: Roboto, Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+	<tr>
+		<td class="sectionCell" align="center" valign="top" style="padding-left: 10px; padding-right: 10px; padding-bottom: 25px; border-top: 1px solid #cccccc;">
+			<!-- // Mobile Navigation -->
+			<table class="contentWrap" border="0" cellpadding="0" cellspacing="0" align="center" width="620" style="width: 620px; min-width: 620px;">
+				<tr>
+					<td valign="top">
+						<table border="0" cellpadding="0" cellspacing="0" class="dHide">
+							<tr>
+								<td class="dHide" valign="top" align="center" style="width: 0px; max-height: 0px; display: none; mso-hide: all; line-height: 0px;">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+										<tr>
+											<td class="mFooterNav" valign="top" align="center" style="width: 0px; max-height: 0px; font-size: 0px; line-height: 0px; color: #fefefe; display: none; mso-hide: all; line-height: 0px"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-conted/?utm_content=footer-conted" class="mNavigation" style="text-decoration: none; color: #434343;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Continuing Education</span></a></td>
+										</tr>
+										<tr>
+											<td class="mFooterNav" valign="top" align="center" style="width: 0px; max-height: 0px; font-size: 0px; line-height: 0px; color: #fefefe; display: none; mso-hide: all; line-height: 0px"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-hep/?utm_content=footer-pateng" class="mNavigation" style="text-decoration: none; color: #434343;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Patient Engagement</span></a></td>
+										</tr>
+										<tr>
+											<td class="mFooterNav" valign="top" align="center" style="width: 0px; max-height: 0px; font-size: 0px; line-height: 0px; color: #fefefe; display: none; mso-hide: all; line-height: 0px"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-enterprise/?utm_content=footer-ent" class="mNavigation" style="text-decoration: none; color: #434343;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Enterprise</span></a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<!-- Mobile Navigation \\ -->
+			<!-- // Footer -->
+			<table class="contentWrap" border="0" cellpadding="0" cellspacing="0" align="center" width="620" style="width: 620px; min-width: 620px;">
+				<tr>
+					<td valign="top" align="center" style="padding-top: 25px; padding-bottom: 30px;">
+						<table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tr>
+								<td valign="top" align="center" style="padding-bottom: 25px; border-bottom: 1px solid #cccccc; font-size: 14px; line-height: 19px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;"><b style="font-weight: 300;">Part of a group?</b> Learn about the <a href="https://www.medbridgeeducation.com/jan-pompon-pt-enterprise/?utm_content=footer-ent" style="text-decoration: underline; color: #076ad2;" target="_blank">MedBridge&nbsp;Enterprise&nbsp;Solution</a>.</span></td>
+							</tr>
+							<tr>
+								<td valign="top" align="center" style="padding-bottom: 15px; padding-top: 15px; border-bottom: 1px solid #cccccc;">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tr>
+											<td valign="top" align="center">
+												<table border="0" cellpadding="0" cellspacing="0">
+													<tr>
+														<td valign="top" align="left">
+															<!-- Social Section -->
+															<table border="0" cellpadding="0" cellspacing="0" width="220" class="fullWidth" align="left">
+																<tr>
+																	<td class="social-section" align="center">
+																		<table border="0" cellpadding="0" cellspacing="0" align="center">
+																			<tr>
+																				<td align="center" valign="top"><a href="https://www.facebook.com/MedBridgeEducation?utm_content=footer-social-fb" style="text-decoration: none; color: #666666;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/facebook-icon-150x150.png" alt="FB" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block;"></a></td>
+																				<td align="center" valign="top" style="padding: 0px 10px;"><a href="https://www.twitter.com/MedBridgeEd?utm_content=footer-social-tw" style="text-decoration: none; color: #666666;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/twitter-icon-150x150.png" alt="TW" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block;"></a></td>
+																				<td align="center" valign="top"><a href="https://www.linkedin.com/company/medbridge-education?utm_content=footer-social-li" style="text-decoration: none; color: #666666;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/linkedin-icon-150x150.png" alt="LI" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block;"></a></td>
+																				<td align="center" valign="top" style="padding:0 0 0 10px;"><a href="https://www.youtube.com/user/medbridgeeducation?utm_content=footer-social-yt" style="text-decoration: none; color: #666666;" target="_blank"><img src="https://s3.amazonaws.com/medbridgemarketing/holiday/2015/youtube-icon-150x150.png" alt="YT" width="35" height="35" border="0" hspace="0" vspace="0" style="width: 35px; min-width: 35px; line-height:33px; border: 0; Outline: none; display: block;"></a></td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+															<!--[if gte mso 9]>
+															</td><td valign="top" align="left" width="10">
+															<![endif]-->
+															<table border="0" cellpadding="0" cellspacing="0" width="10" class="fullWidth" align="left">
+																<tr>
+																	<td class="social-spacer" valign="top" align="left" width="10" height="35" style="font-size: 1px; line-height: 35px; border-right: 1px solid #cccccc;"></td>
+																</tr>
+															</table>
+															<!--[if gte mso 9]>
+															</td><td valign="top" align="left" width="270">
+															<![endif]-->
+															<table border="0" cellpadding="0" cellspacing="0" width="270" class="fullWidth" align="left">
+																<tr>
+																	<td valign="top" align="center">
+																		<table border="0" cellpadding="0" cellspacing="0">
+																			<tr>
+																				<td class="noPadding" valign="top" align="left" style="padding-left: 30px;">
+																					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																						<tr>
+																							<td class="textCenter" valign="top" align="center" style="font-size: 14px; line-height: 19px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-pricing?utm_content=footer-purchase" style="text-decoration: none; color: #666666;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;"><b style="font-weight: 300;">Earn All Your CEUs for One Price</b></span></a></td>
+																						</tr>
+																						<tr>
+																							<td class="textCenter" valign="top" align="center" style="font-size: 14px; line-height: 19px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><a href="https://www.medbridgeeducation.com/jan-pompon-pt-pricing?utm_content=footer-purchase" style="text-decoration: none; color: #666666;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Subscribe Today&nbsp;&rarr;</span></a></td>
+																						</tr>
+																					</table>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" align="left" style="padding-top: 20px;">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tr>
+											<td align="center" valign="top" style="font-size: 12px; line-height: 16px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><a href="*|ARCHIVE|*" class="mFooterLink" style="color: #666666; text-decoration: underline;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">View Online</span></a> <span class="mHide">&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;</span> <a href="*|UNSUB|*" class="mFooterLink" style="color: #666666; text-decoration: underline;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Unsubscribe</span></a> <span class="mHide">&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;</span> <a href="https://www.medbridgeeducation.com/jan-pompon-pt-support?utm_content=footer-support" class="mFooterLink" style="color: #666666; text-decoration: underline;" target="_blank"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">Support</span></a>
+											</td>
+										</tr>
+										<tr>
+											<td align="center" valign="top" style="padding-top: 15px; padding-right: 5px; padding-bottom: 10px; padding-left: 5px; font-size: 12px; line-height: 16px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #666666;"><span style="font-family: Roboto, Helvetica, Arial, sans-serif !important;">*|LIST:ADDRESSLINE|*</span></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<!-- Footer \\ -->
+		</td>
+	</tr>
+</table>
+<!-- Footer Section Wrap \\ -->
 
 	</center></td></tr></table>
 </body>
