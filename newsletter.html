@@ -9,6 +9,7 @@
 	<title>MedBridge</title>
 	<style type="text/css">
 	/*
+
 		### Built with assistance from these sources:
 		    - https://github.com/Slicejack/slicejack-email-boilerplate/blob/master/email.html
 				- https://github.com/hteumeuleu/email-bugs/issues
@@ -19,6 +20,11 @@
 	      - Yahoo removes !important with a space before it when using it on the display property. | https://github.com/hteumeuleu/email-bugs/issues/16
 				- Gmail on desktop does not support attribute selectors or psuedo-class selectors. However, support for classes and IDs was recently added.
 				- The old Outlook.com's CSS support depends on case. Notably, Margin and Outline must not be in all lowercase. | https://github.com/hteumeuleu/email-bugs/issues/6
+
+		### To-Do
+				- Which clients ignore style blocks and styles inlined? Ask on Litmus?
+					- We don't need to inline text-decoration:none; for Gmail anymore. But do other clients need it inlined?
+
 	*/
 
 	/*
@@ -120,7 +126,8 @@
 		}*/
 
 		body > div {
-			/* The fix above may not be working still. Unconfirmed. A user with the issue used the following to fix the vertical padding. https://litmus.com/community/discussions/4194-why-is-email-not-centered-on-android-4-4#comment-10172 */
+			/*  Centering emails in Android 4.4 KitKat.
+			The fix above may not be working still. Unconfirmed. A user with the issue used the following to fix the vertical padding. https://litmus.com/community/discussions/4194-why-is-email-not-centered-on-android-4-4#comment-10172 */
 			margin:0 !important;
 		}
 
@@ -171,10 +178,15 @@
 			background-color: #eaedee;
 		}
 
-		/* This isn't bulletproof in Gmail. Your link colors will be overrided if you don't inline them as well. */
-		a, a:visited, a:active, a:link, a:hover, a:-webkit-any-link {
+		/*
+			Gmail Notes:
+			 - In order to make link colors in Gmail bulletproof, you need to reference a class or ID first. Additionally, Gmail ignores `a:link`, use just `a` instead. Otherwise, they default to Google's stylesheet if the color isn't included in the style attribute of the <a> tag.
+			 - `text-decoration: none` on links successfully persists without inlining in Gmail even when images are off by default and toggled on.
+		*/
+		#body-table a, #body-table a:visited, #body-table a:active, #body-table a:hover,
+		a, a:link, a:visited, a:active, a:hover {
 			text-decoration: none;
-			color: #076ad2; /* rgb(7, 106, 210) */
+			color: #076ad2; /* seen as rgb(7, 106, 210) in chrome dev tools */
 		}
 
 	  .sectionWrap {
@@ -218,6 +230,9 @@
     	.coursesCta { Margin: 0 auto !important; padding-bottom: 15px !important; }
 			.mReset-width { width:100% !important; }
 
+			/* Alignment Resets */
+			.table-center {	Margin: 0 auto !important; }
+			
     	/* Text Resets */
       .textCenter { text-align: center !important; }
       .headline { font-size: 24px !important; line-height: 28px !important; }
